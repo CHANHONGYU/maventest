@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+<!--    注解配置-->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+<!--xml配置-->
+<!--    <aop:config>-->
+<!--&lt;!&ndash;        切入点 service&ndash;&gt;-->
+<!--        <aop:pointcut id="pointcut" expression="execution(public * com.company.service.Impl.*(..))"/>-->
+<!--        <aop:advisor pointcut-ref="pointcut" advice-ref="advice"></aop:advisor>-->
+<!--    </aop:config>-->
+<!--    <tx:advice id="advice">-->
+<!--        <tx:attributes>-->
+<!--            <tx:method name="save*" propagation="REQUIRED"/>-->
+<!--            <tx:method name="add*" propagation="REQUIRED"/>-->
+<!--            <tx:method name="update*" propagation="REQUIRED"/>-->
+<!--            <tx:method name="select*" propagation="NOT_SUPPORTED"/>-->
+<!--        </tx:attributes>-->
+<!--    </tx:advice>-->
+</beans>
